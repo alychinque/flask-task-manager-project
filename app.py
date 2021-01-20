@@ -109,7 +109,7 @@ def add_task():
             'task_description': request.form.get('task_description'),
             'is_urgent': is_urgent,
             'due_date': request.form.get('due_date'),
-            'create_by': session['user']
+            'created_by': session['user']
         }
         mongo.db.tasks.insert_one(task)
         flash('Task Successfully Added')
@@ -117,6 +117,15 @@ def add_task():
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_task.html", categories=categories)
+
+
+@app.route('/edit_task/<task_id>', methods=['GET', 'POST'])
+def edit_task(task_id):
+    task = mongo.db.categories.find_one({'_id': ObjectId(task_id)})
+
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("edit_task.html", task=task, categories=categories)
+
 
 
 if __name__ == '__main__':
