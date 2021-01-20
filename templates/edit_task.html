@@ -46,9 +46,9 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-calendar-alt prefix light-blue-text text-darken-4"></i>
-                    <input id="due_day" name="due_day" type="text"
+                    <input id="due_date" name="due_date" type="text"
                         value="{{ task.due_date }}" class="datepicker validate" required>
-                    <label for="task_name">Due Date</label>
+                    <label for="due_date">Due Date</label>
                 </div>
             </div>
             <!-- is_urgent toggle -->
@@ -56,8 +56,8 @@
                 <div class="input-field col s12">
                     <div class="switch">
                         <i class="fas fa-exclamation-circle prefix light-blue-text text-darken-4"></i>
-                        <label for="is_urgent">`
-                            {% if task.is_urgernt == 'on' %}
+                        <label for="is_urgent">
+                            {% if task.is_urgent == 'on' %}
                                 <input type="checkbox" id="is_urgent" name="is_urgent" checked>
                             {% else %}
                                 <input type="checkbox" id="is_urgent" name="is_urgent">
